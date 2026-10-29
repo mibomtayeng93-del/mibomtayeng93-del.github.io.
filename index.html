@@ -116,48 +116,69 @@ h1{
 .message h2{
   text-align:center;
   margin-bottom:8px;
-  font-size:17px;
+  font-size:18px;
   color:#ffb4df;
 }
 
-.game-box {
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 15px;
-  background: rgba(0,0,0,0.2);
-  border: 1px dashed rgba(255,255,255,0.2);
+/* Tap the Hearts Game Styles */
+.game-container {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed rgba(255,180,223,0.3);
   text-align: center;
 }
 
-.game-btn {
-  border: 0;
-  background: linear-gradient(90deg,#9b5cff,#ff4d9d);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
+.game-header {
+  display: flex;
+  justify-content: space-between;
   font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #ffb4df;
+}
+
+.game-area {
+  width: 100%;
+  height: 200px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-btn {
+  border: 0;
+  background: linear-gradient(90deg,#ff4d9d,#9b5cff);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 12px;
-  margin-top: 6px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.game-output {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #ffb4df;
-  font-style: italic;
-  min-height: 35px;
+.heart-target {
+  position: absolute;
+  font-size: 32px;
+  cursor: pointer;
+  user-select: none;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .good-luck {
-  margin-top: 12px;
+  margin-top: 15px;
   font-weight: bold;
   font-size: 14px;
   color: #fff;
   text-align: center;
   background: rgba(255, 180, 223, 0.15);
-  padding: 8px;
+  padding: 10px;
   border-radius: 12px;
 }
 
@@ -165,12 +186,17 @@ h1{
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
 </style>
 </head>
 <body>
 
   <div class="container">
-    <div class="card" id="cardBox">
+    <div class="card">
       <div class="top">📚 Exam Stress Reliever</div>
       <h1>Will you pass your exam?</h1>
       <p class="subtitle">Be completely honest with me... ready to ace it? 😉</p>
@@ -181,16 +207,20 @@ h1{
         <button class="btn" id="noBtn" onclick="revealCheer()">No</button>
       </div>
 
-      <!-- Secret Message & Game Area (Appears when 'No' is clicked) -->
+      <!-- Secret Message & Game Area -->
       <div class="message" id="secretMessage">
         <h2>Don't Stress, Kenri! 💪✨</h2>
-        <p>I know exams can feel super heavy right now, but remember how capable you are. Take a deep breath, trust yourself, and do your best. You've got this!</p>
+        <p style="text-align:center;">I know exams can feel super heavy right now, but remember how capable you are. Take a deep breath, trust yourself, and do your best!</p>
         
-        <!-- Mini Game / Motivation Generator -->
-        <div class="game-box">
-          <p style="font-size:11px; opacity:0.8;">🎁 Tap below for your random Exam Power-Up!</p>
-          <button class="game-btn" onclick="getRandomBoost()">Get Power-Up ✨</button>
-          <div class="game-output" id="gameOutput">Tap the button for a motivational boost! 💖</div>
+        <!-- Tap the Hearts Game -->
+        <div class="game-container">
+          <div class="game-header">
+            <span>🎯 Score: <span id="score">0</span></span>
+            <span>⏳ Time: <span id="timer">20</span>s</span>
+          </div>
+          <div class="game-area" id="gameArea">
+            <button class="start-btn" id="startBtn" onclick="startGame()">Play "Tap the Hearts"! 💖</button>
+          </div>
         </div>
 
         <!-- Final Best of Luck Note -->
@@ -215,17 +245,85 @@ h1{
     document.getElementById("secretMessage").style.display = "block";
   }
 
-  const boosts = [
-    "🌟 Power-Up: +100 Focus & Zero Panic unlocked!",
-    "☕ Coffee/Tea boost activated! Your brain is working at 100% capacity.",
-    "🍀 Lucky Charm: Every guess you make will be the right one!",
-    "🧠 Ultimate Wisdom: You already studied harder than you think. Trust your memory!",
-    "💫 Energy Boost: You are going to ace these questions like a total pro!"
-  ];
+  /* Tap the Hearts Game Logic */
+  let score = 0;
+  let timeLeft = 20;
+  let gameInterval = null;
+  let heartTimeout = null;
 
-  function getRandomBoost() {
-    const randomIndex = Math.floor(Math.random() * boosts.length);
-    document.getElementById("gameOutput").innerText = boosts[randomIndex];
+  function startGame() {
+    score = 0;
+    timeLeft = 20;
+    document.getElementById("score").innerText = score;
+    document.getElementById("timer").innerText = timeLeft;
+    
+    const gameArea = document.getElementById("gameArea");
+    gameArea.innerHTML = ""; // Clear start button
+
+    // Timer countdown
+    gameInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timer").innerText = timeLeft;
+      if (timeLeft <= 0) {
+        endGame();
+      }
+    }, 1000);
+
+    spawnHeart();
+  }
+
+  function spawnHeart() {
+    const gameArea = document.getElementById("gameArea");
+    gameArea.innerHTML = ""; // Remove previous heart if missed
+
+    if (timeLeft <= 0) return;
+
+    const heart = document.createElement("div");
+    heart.className = "heart-target";
+    
+    // Choose random heart emoji
+    const hearts = ["💖", "💗", "💕", "❤️", "✨"];
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+
+    // Random positioning inside the area
+    const maxX = gameArea.clientWidth - 50;
+    const maxY = gameArea.clientHeight - 50;
+    const x = Math.max(10, Math.floor(Math.random() * maxX));
+    const y = Math.max(10, Math.floor(Math.random() * maxY));
+
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+
+    heart.onclick = heart.ontouchstart = function(e) {
+      e.preventDefault();
+      score++;
+      document.getElementById("score").innerText = score;
+      clearTimeout(heartTimeout);
+      spawnHeart();
+    };
+
+    gameArea.appendChild(heart);
+
+    // Heart automatically shifts position after 0.9s if not tapped
+    heartTimeout = setTimeout(() => {
+      if (timeLeft > 0) spawnHeart();
+    }, 900);
+  }
+
+  function endGame() {
+    clearInterval(gameInterval);
+    clearTimeout(heartTimeout);
+    const gameArea = document.getElementById("gameArea");
+    
+    let message = "Awesome job! You popped " + score + " hearts! 💕";
+    if(score >= 15) message = "🏆 Super Speed! " + score + " hearts caught! You're going to crush your exams!";
+
+    gameArea.innerHTML = `
+      <div style="padding:10px;">
+        <p style="font-weight:bold; color:#ffb4df; margin-bottom:10px;">${message}</p>
+        <button class="start-btn" onclick="startGame()">Play Again 🔄</button>
+      </div>
+    `;
   }
 </script>
 
