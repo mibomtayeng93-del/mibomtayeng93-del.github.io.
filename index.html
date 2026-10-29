@@ -120,7 +120,6 @@ h1{
   color:#ffd1e8;
 }
 
-/* Cozy Tab Navigation */
 .tab-menu {
   display: flex;
   flex-wrap: wrap;
@@ -151,7 +150,7 @@ h1{
   border-radius: 18px;
   padding: 15px 10px;
   text-align: center;
-  min-height: 210px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -185,28 +184,20 @@ h1{
   font-size: 60px;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.15s;
-}
-.puppy-display:active {
-  transform: scale(1.2);
 }
 
 /* 👗 Dress Up */
-.avatar-container {
-  font-size: 45px;
-  margin-bottom: 5px;
-}
 .dress-options {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 10px;
 }
 .dress-item {
-  font-size: 22px;
+  font-size: 26px;
   background: rgba(255,255,255,0.1);
-  padding: 6px 8px;
-  border-radius: 10px;
+  padding: 8px;
+  border-radius: 12px;
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.2);
 }
@@ -224,7 +215,6 @@ h1{
   background: rgba(255,255,255,0.1);
   padding: 6px 10px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.15);
 }
 
 /* 🎁 Mystery Box */
@@ -237,10 +227,6 @@ h1{
 .gift-box {
   font-size: 40px;
   cursor: pointer;
-  transition: transform 0.2s;
-}
-.gift-box:hover {
-  transform: scale(1.1);
 }
 
 /* 🌧️ Rain Break */
@@ -304,10 +290,10 @@ h1{
         <h2>Take a Cozy Break, Kenri! 🌸✨</h2>
         <p style="text-align:center; font-size:12px; opacity:0.85;">Tap around the tabs below whenever you need to clear your mind.</p>
         
-        <!-- Tab Navigation for the 6 New Cozy Features -->
+        <!-- Tab Navigation -->
         <div class="tab-menu">
           <button class="tab-btn active" onclick="switchTab(0)">🐶 Puppy</button>
-          <button class="tab-btn" onclick="switchTab(1)">👗 Dress Up</button>
+          <button class="tab-btn" onclick="switchTab(1)">👗 Dress</button>
           <button class="tab-btn" onclick="switchTab(2)">🍜 Food</button>
           <button class="tab-btn" onclick="switchTab(3)">🎁 Mystery</button>
           <button class="tab-btn" onclick="switchTab(4)">🌧️ Rain</button>
@@ -324,37 +310,37 @@ h1{
 
           <!-- 2. Dress Up -->
           <div class="cozy-tab" id="tab1">
-            <div class="avatar-container" id="avatar">👧🏻</div>
+            <p style="font-size:11px; opacity:0.85; margin-bottom:5px;">Choose an outfit style:</p>
             <div class="dress-options">
-              <span class="dress-item" onclick="dressUp('👑')">👑</span>
-              <span class="dress-item" onclick="dressUp('🎀')">🎀</span>
-              <span class="dress-item" onclick="dressUp('🎓')">🎓</span>
-              <span class="dress-item" onclick="dressUp('🕶️')">🕶️</span>
+              <span class="dress-item" onclick="chooseOutfit('👑 Queen Style')">👑</span>
+              <span class="dress-item" onclick="chooseOutfit('🎀 Cozy Ribbon')">🎀</span>
+              <span class="dress-item" onclick="chooseOutfit('🎓 Scholar Cap')">🎓</span>
+              <span class="dress-item" onclick="chooseOutfit('🕶️ Cool Vibes')">🕶️</span>
             </div>
-            <p id="dressText" style="font-size:11px; color:#ffd1e8; margin-top:6px;">Choose an accessory for Kenri!</p>
+            <p id="outfitText" style="font-size:12px; color:#ffd1e8; margin-top:10px; min-height:30px;">Tap an option above!</p>
           </div>
 
           <!-- 3. Food Corner -->
           <div class="cozy-tab" id="tab2">
-            <p style="font-size:11px; opacity:0.85;">What are you craving right now?</p>
+            <p style="font-size:11px; opacity:0.85;">What food are you craving?</p>
             <div class="food-options">
               <span class="food-item" onclick="chooseFood('🍜')">🍜</span>
               <span class="food-item" onclick="chooseFood('🍕')">🍕</span>
               <span class="food-item" onclick="chooseFood('🧋')">🧋</span>
               <span class="food-item" onclick="chooseFood('🍫')">🍫</span>
             </div>
-            <p id="foodText" style="font-size:12px; color:#ffd1e8; margin-top:8px; min-height:35px;"></p>
+            <p id="foodText" style="font-size:12px; color:#ffd1e8; margin-top:8px; min-height:30px;"></p>
           </div>
 
           <!-- 4. Mystery Box -->
           <div class="cozy-tab" id="tab3">
-            <p style="font-size:11px; opacity:0.85;">Pick a mystery box for a secret sweet note!</p>
+            <p style="font-size:11px; opacity:0.85;">Pick a mystery box for a secret note!</p>
             <div class="box-grid">
               <span class="gift-box" onclick="openBox(0)">🎁</span>
               <span class="gift-box" onclick="openBox(1)">🎁</span>
               <span class="gift-box" onclick="openBox(2)">🎁</span>
             </div>
-            <p id="boxText" style="font-size:12px; color:#ffd1e8; min-height:35px;"></p>
+            <p id="boxText" style="font-size:12px; color:#ffd1e8; min-height:30px;"></p>
           </div>
 
           <!-- 5. Rain Break -->
@@ -363,15 +349,15 @@ h1{
               <div class="raindrop" style="left:20%; animation-duration: 0.8s;">💧</div>
               <div class="raindrop" style="left:50%; animation-duration: 0.6s;">💧</div>
               <div class="raindrop" style="left:80%; animation-duration: 1.0s;">💧</div>
-              <span style="z-index:2; font-size:12px; background:rgba(0,0,0,0.45); padding:5px 12px; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">Close your eyes, breathe in, and relax... 🌿</span>
+              <span style="z-index:2; font-size:12px; background:rgba(0,0,0,0.45); padding:5px 12px; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">Breathe in... Breathe out... 🌿</span>
             </div>
           </div>
 
           <!-- 6. Music -->
           <div class="cozy-tab" id="tab5">
             <p style="font-size:13px; font-weight:bold; color:#ffd1e8;">🎵 Soft Study Vibe</p>
-            <p style="font-size:11px; opacity:0.8; margin:6px 0 10px;">Imagine calm, cozy lo-fi notes playing in the background while you conquer your goals. 🎧✨</p>
-            <button class="cozy-action-btn" onclick="alert('🎶 Cozy background melody playing in spirit! You got this!')">Toggle Chill Vibe 🎶</button>
+            <p style="font-size:11px; opacity:0.8; margin:6px 0 10px;">Imagine calm, cozy lo-fi notes playing in the background while you study. 🎧✨</p>
+            <button class="cozy-action-btn" onclick="alert('🎶 Cozy background melody playing in spirit! You got this!')">Play Relax Vibe 🎶</button>
           </div>
 
         </div>
@@ -407,7 +393,7 @@ h1{
     });
   }
 
-  // 🐶 Pet Puppy logic
+  // Puppy logic
   let pIndex = 0;
   const pMsgs = [
     "Woof! 🥰 You're doing amazing!",
@@ -421,16 +407,15 @@ h1{
     document.getElementById("puppyEmoji").innerText = pIndex % 2 === 0 ? "🐶" : "🐕‍🦺";
   }
 
-  // 👗 Dress Up logic
-  function dressUp(acc) {
-    document.getElementById("avatar").innerText = "👧🏻 " + acc;
-    document.getElementById("dressText").innerText = "Looking ultra smart and ready! ✨";
+  // Dress logic
+  function chooseOutfit(style) {
+    document.getElementById("outfitText").innerText = "Selected: " + style + "! Looking fabulous! ✨";
   }
 
-  // 🍜 Food Corner logic
+  // Food logic
   function chooseFood(item) {
     const foodNotes = {
-      '🍜': "A delicious warm bowl of noodles is waiting for you right after your exam! 🍜",
+      '🍜': "A delicious warm bowl of noodles is waiting for you after your exam! 🍜",
       '🍕': "A big celebration pizza party is mandatory once you finish! 🍕",
       '🧋': "Bubble tea sugar boost activated to fuel your brain! 🧋",
       '🍫': "Sweet chocolate energy for a brilliant student! 🍫"
@@ -438,10 +423,10 @@ h1{
     document.getElementById("foodText").innerText = foodNotes[item];
   }
 
-  // 🎁 Mystery Box logic
+  // Mystery Box logic
   const boxNotes = [
-    "🎁 Surprise Note: You have prepared way better than you think you have!",
-    "🎁 Surprise Note: Remember to take deep breaths—you are totally capable!",
+    "🎁 Surprise Note: You have prepared way better than you think!",
+    "🎁 Surprise Note: Take deep breaths—you are totally capable!",
     "🎁 Surprise Note: Sending you a massive wave of absolute best luck energy!"
   ];
   function openBox(index) {
@@ -450,4 +435,4 @@ h1{
 </script>
 
 </body>
-  </html>
+              </html>
