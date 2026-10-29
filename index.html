@@ -37,7 +37,7 @@ body{
 
 .card{
   width:100%;
-  padding:30px 20px;
+  padding:25px 20px;
   border-radius:30px;
   background:rgba(255,255,255,.075);
   border:1px solid rgba(255,255,255,.14);
@@ -54,7 +54,7 @@ body{
 }
 
 h1{
-  font-size:clamp(28px,7vw,42px);
+  font-size:clamp(26px,6.5vw,38px);
   margin:10px 0 10px;
   background:linear-gradient(90deg,#fff,#ffb4df,#d9b8ff);
   -webkit-background-clip:text;
@@ -64,7 +64,7 @@ h1{
 
 .subtitle{
   font-size:14px;
-  line-height:1.6;
+  line-height:1.5;
   opacity:.85;
   margin-bottom:20px;
 }
@@ -74,7 +74,7 @@ h1{
   justify-content: center;
   gap: 15px;
   position: relative;
-  min-height: 60px;
+  min-height: 55px;
   margin-bottom: 10px;
 }
 
@@ -104,25 +104,25 @@ h1{
   display:none;
   margin-top:15px;
   text-align:left;
-  padding:20px;
+  padding:15px;
   border-radius:20px;
   background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.13);
-  line-height:1.7;
-  font-size:14px;
+  line-height:1.6;
+  font-size:13px;
   animation: fadeIn 0.6s ease;
 }
 
 .message h2{
   text-align:center;
-  margin-bottom:10px;
-  font-size:18px;
+  margin-bottom:8px;
+  font-size:17px;
   color:#ffb4df;
 }
 
 .game-box {
-  margin-top: 15px;
-  padding: 15px;
+  margin-top: 12px;
+  padding: 12px;
   border-radius: 15px;
   background: rgba(0,0,0,0.2);
   border: 1px dashed rgba(255,255,255,0.2);
@@ -133,31 +133,31 @@ h1{
   border: 0;
   background: linear-gradient(90deg,#9b5cff,#ff4d9d);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 13px;
-  margin-top: 8px;
+  font-size: 12px;
+  margin-top: 6px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .game-output {
-  margin-top: 10px;
-  font-size: 13px;
+  margin-top: 8px;
+  font-size: 12px;
   color: #ffb4df;
   font-style: italic;
-  min-height: 40px;
+  min-height: 35px;
 }
 
 .good-luck {
-  margin-top: 15px;
+  margin-top: 12px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
   color: #fff;
   text-align: center;
   background: rgba(255, 180, 223, 0.15);
-  padding: 10px;
+  padding: 8px;
   border-radius: 12px;
 }
 
@@ -188,7 +188,7 @@ h1{
         
         <!-- Mini Game / Motivation Generator -->
         <div class="game-box">
-          <p style="font-size:12px; opacity:0.8;">🎁 Tap below for your random Exam Power-Up!</p>
+          <p style="font-size:11px; opacity:0.8;">🎁 Tap below for your random Exam Power-Up!</p>
           <button class="game-btn" onclick="getRandomBoost()">Get Power-Up ✨</button>
           <div class="game-output" id="gameOutput">Tap the button for a motivational boost! 💖</div>
         </div>
@@ -205,4 +205,29 @@ h1{
 <script>
   function moveYes() {
     const yesBtn = document.getElementById("yesBtn");
-    const randomX 
+    const randomX = (Math.random() - 0.5) * 140;
+    const randomY = (Math.random() - 0.5) * 80;
+    yesBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+  }
+
+  function revealCheer() {
+    document.getElementById("btnGroup").style.display = "none";
+    document.getElementById("secretMessage").style.display = "block";
+  }
+
+  const boosts = [
+    "🌟 Power-Up: +100 Focus & Zero Panic unlocked!",
+    "☕ Coffee/Tea boost activated! Your brain is working at 100% capacity.",
+    "🍀 Lucky Charm: Every guess you make will be the right one!",
+    "🧠 Ultimate Wisdom: You already studied harder than you think. Trust your memory!",
+    "💫 Energy Boost: You are going to ace these questions like a total pro!"
+  ];
+
+  function getRandomBoost() {
+    const randomIndex = Math.floor(Math.random() * boosts.length);
+    document.getElementById("gameOutput").innerText = boosts[randomIndex];
+  }
+</script>
+
+</body>
+</html>
