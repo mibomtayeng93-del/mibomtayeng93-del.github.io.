@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Kenri ❤️</title>
+<title>For Kenri ❤️ - Cozy Break</title>
 
 <style>
 *{
@@ -17,9 +17,9 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   color:#fff;
   background:
-    radial-gradient(circle at 20% 10%,#7b2b72 0%,transparent 35%),
-    radial-gradient(circle at 80% 90%,#4b1d68 0%,transparent 35%),
-    linear-gradient(135deg,#090713,#170d25,#090713);
+    radial-gradient(circle at 15% 20%,#4e2a58 0%,transparent 40%),
+    radial-gradient(circle at 85% 80%,#2d325a 0%,transparent 40%),
+    linear-gradient(135deg,#0c0914,#1a132b,#0c0914);
   overflow-x:hidden;
   display:flex;
   justify-content:center;
@@ -56,7 +56,7 @@ body{
 h1{
   font-size:clamp(24px,6.5vw,36px);
   margin:10px 0 8px;
-  background:linear-gradient(90deg,#fff,#ffb4df,#d9b8ff);
+  background:linear-gradient(90deg,#fff,#ffd1e8,#c2d4ff);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
@@ -91,7 +91,7 @@ h1{
 }
 
 #yesBtn {
-  background:linear-gradient(90deg,#ff4d9d,#9b5cff);
+  background:linear-gradient(90deg,#ff65b3,#7b5cff);
   position: relative;
 }
 
@@ -116,173 +116,165 @@ h1{
 .message h2{
   text-align:center;
   margin-bottom:8px;
-  font-size:18px;
-  color:#ffb4df;
+  font-size:17px;
+  color:#ffd1e8;
 }
 
-/* Tab Navigation */
+/* Cozy Tab Navigation */
 .tab-menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   justify-content: center;
-  margin: 15px 0 10px;
+  margin: 12px 0 8px;
 }
 
 .tab-btn {
   border: 0;
   background: rgba(255,255,255,0.1);
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 15px;
-  font-size: 11px;
+  padding: 5px 9px;
+  border-radius: 12px;
+  font-size: 10px;
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.15);
 }
 
 .tab-btn.active {
-  background: linear-gradient(90deg,#ff4d9d,#9b5cff);
+  background: linear-gradient(90deg,#ff65b3,#7b5cff);
   font-weight: bold;
 }
 
-.game-box {
+.cozy-box {
   background: rgba(0,0,0,0.25);
-  border: 1px dashed rgba(255,180,223,0.3);
+  border: 1px dashed rgba(255,209,232,0.3);
   border-radius: 18px;
-  padding: 12px;
+  padding: 15px 10px;
   text-align: center;
-  min-height: 220px;
+  min-height: 210px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.game-tab {
+.cozy-tab {
   display: none;
   width: 100%;
 }
 
-.game-tab.active {
+.cozy-tab.active {
   display: block;
 }
 
-.action-btn {
+.cozy-action-btn {
   border: 0;
-  background: linear-gradient(90deg,#ff4d9d,#9b5cff);
+  background: linear-gradient(90deg,#ff65b3,#7b5cff);
   color: white;
-  padding: 8px 18px;
+  padding: 7px 16px;
   border-radius: 20px;
   font-weight: bold;
   font-size: 12px;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* 🎯 Hearts Game */
-.hearts-area {
-  width: 100%;
-  height: 160px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 8px;
-}
-.heart-target {
-  position: absolute;
-  font-size: 28px;
+/* 🐶 Pet the Puppy */
+.puppy-display {
+  font-size: 60px;
   cursor: pointer;
   user-select: none;
+  transition: transform 0.15s;
+}
+.puppy-display:active {
+  transform: scale(1.2);
 }
 
-/* 🧠 Memory Game */
-.memory-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+/* 👗 Dress Up */
+.avatar-container {
+  font-size: 45px;
+  margin-bottom: 5px;
+}
+.dress-options {
+  display: flex;
+  justify-content: center;
   gap: 8px;
   margin-top: 8px;
 }
-.memory-card {
-  height: 45px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
+.dress-item {
+  font-size: 22px;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 8px;
+  border-radius: 10px;
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* 💕 Pick a Box */
-.box-grid {
+/* 🍜 Food Corner */
+.food-options {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 12px 0;
+  margin-top: 10px;
+}
+.food-item {
+  font-size: 28px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* 🎁 Mystery Box */
+.box-grid {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 10px 0;
 }
 .gift-box {
-  font-size: 36px;
+  font-size: 40px;
   cursor: pointer;
   transition: transform 0.2s;
 }
+.gift-box:hover {
+  transform: scale(1.1);
+}
 
-/* ⚡ Reaction Test */
-.reaction-box {
+/* 🌧️ Rain Break */
+.rain-box {
   width: 100%;
-  height: 140px;
+  height: 110px;
+  background: rgba(20,40,70,0.4);
   border-radius: 12px;
-  background: #ce3a3a;
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.raindrop {
+  position: absolute;
+  color: #a4c7ff;
   font-size: 14px;
-  cursor: pointer;
-  margin-top: 8px;
+  animation: fall linear infinite;
 }
-
-/* 🧩 Quiz */
-.quiz-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 10px;
-}
-.quiz-opt {
-  background: rgba(255,255,255,0.1);
-  padding: 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.2);
-  cursor: pointer;
-  font-size: 12px;
-}
-
-/* 🌸 Mood Picker */
-.mood-grid {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 10px;
-}
-.mood-btn {
-  font-size: 24px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 8px;
-  border-radius: 12px;
-  cursor: pointer;
+@keyframes fall {
+  0% { transform: translateY(-20px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(120px); opacity: 0; }
 }
 
 .good-luck {
-  margin-top: 15px;
+  margin-top: 14px;
   font-weight: bold;
   font-size: 13px;
   color: #fff;
   text-align: center;
-  background: rgba(255, 180, 223, 0.15);
+  background: rgba(255, 209, 232, 0.15);
   padding: 10px;
   border-radius: 12px;
 }
@@ -307,76 +299,79 @@ h1{
         <button class="btn" id="noBtn" onclick="revealCheer()">No</button>
       </div>
 
-      <!-- Secret Message & Games Area -->
+      <!-- Secret Message & Cozy Corners Area -->
       <div class="message" id="secretMessage">
-        <h2>Don't Stress, Kenri! 💪✨</h2>
-        <p style="text-align:center;">I know exams can feel super heavy right now, but remember how capable you are. Take a deep breath and have some fun!</p>
+        <h2>Take a Cozy Break, Kenri! 🌸✨</h2>
+        <p style="text-align:center; font-size:12px; opacity:0.85;">Tap around the tabs below whenever you need to clear your mind.</p>
         
-        <!-- Game Selector Tabs -->
+        <!-- Tab Navigation for the 6 New Cozy Features -->
         <div class="tab-menu">
-          <button class="tab-btn active" onclick="switchTab(0)">🎯 Hearts</button>
-          <button class="tab-btn" onclick="switchTab(1)">🧠 Memory</button>
-          <button class="tab-btn" onclick="switchTab(2)">💕 Box</button>
-          <button class="tab-btn" onclick="switchTab(3)">⚡ Reaction</button>
-          <button class="tab-btn" onclick="switchTab(4)">🧩 Quiz</button>
-          <button class="tab-btn" onclick="switchTab(5)">🌸 Mood</button>
+          <button class="tab-btn active" onclick="switchTab(0)">🐶 Puppy</button>
+          <button class="tab-btn" onclick="switchTab(1)">👗 Dress Up</button>
+          <button class="tab-btn" onclick="switchTab(2)">🍜 Food</button>
+          <button class="tab-btn" onclick="switchTab(3)">🎁 Mystery</button>
+          <button class="tab-btn" onclick="switchTab(4)">🌧️ Rain</button>
+          <button class="tab-btn" onclick="switchTab(5)">🎵 Music</button>
         </div>
 
-        <div class="game-box">
+        <div class="cozy-box">
 
-          <!-- 1. Tap the Hearts -->
-          <div class="game-tab active" id="tab0">
-            <div style="display:flex; justify-content:space-between; font-size:12px; color:#ffb4df;">
-              <span>Score: <b id="hScore">0</b></span>
-              <span>Time: <b id="hTimer">20</b>s</span>
-            </div>
-            <div class="hearts-area" id="hArea">
-              <button class="action-btn" style="margin-top:50px;" onclick="startHearts()">Start Catching! 💖</button>
-            </div>
+          <!-- 1. Pet the Puppy -->
+          <div class="cozy-tab active" id="tab0">
+            <div class="puppy-display" id="puppyEmoji" onclick="petPuppy()">🐶</div>
+            <p id="puppyText" style="font-size:12px; color:#ffd1e8; margin-top:8px;">Tap the puppy to give him headpats! 🐾</p>
           </div>
 
-          <!-- 2. Mini Memory Game -->
-          <div class="game-tab" id="tab1">
-            <p style="font-size:11px; opacity:0.8;">Find all matching emoji pairs!</p>
-            <div class="memory-grid" id="memGrid"></div>
-            <button class="action-btn" onclick="initMemory()">Reset Game 🔄</button>
+          <!-- 2. Dress Up -->
+          <div class="cozy-tab" id="tab1">
+            <div class="avatar-container" id="avatar">👧🏻</div>
+            <div class="dress-options">
+              <span class="dress-item" onclick="dressUp('👑')">👑</span>
+              <span class="dress-item" onclick="dressUp('🎀')">🎀</span>
+              <span class="dress-item" onclick="dressUp('🎓')">🎓</span>
+              <span class="dress-item" onclick="dressUp('🕶️')">🕶️</span>
+            </div>
+            <p id="dressText" style="font-size:11px; color:#ffd1e8; margin-top:6px;">Choose an accessory for Kenri!</p>
           </div>
 
-          <!-- 3. Pick a Box -->
-          <div class="game-tab" id="tab2">
-            <p style="font-size:11px; opacity:0.8;">Pick a mystery box for a secret message!</p>
+          <!-- 3. Food Corner -->
+          <div class="cozy-tab" id="tab2">
+            <p style="font-size:11px; opacity:0.85;">What are you craving right now?</p>
+            <div class="food-options">
+              <span class="food-item" onclick="chooseFood('🍜')">🍜</span>
+              <span class="food-item" onclick="chooseFood('🍕')">🍕</span>
+              <span class="food-item" onclick="chooseFood('🧋')">🧋</span>
+              <span class="food-item" onclick="chooseFood('🍫')">🍫</span>
+            </div>
+            <p id="foodText" style="font-size:12px; color:#ffd1e8; margin-top:8px; min-height:35px;"></p>
+          </div>
+
+          <!-- 4. Mystery Box -->
+          <div class="cozy-tab" id="tab3">
+            <p style="font-size:11px; opacity:0.85;">Pick a mystery box for a secret sweet note!</p>
             <div class="box-grid">
               <span class="gift-box" onclick="openBox(0)">🎁</span>
               <span class="gift-box" onclick="openBox(1)">🎁</span>
               <span class="gift-box" onclick="openBox(2)">🎁</span>
             </div>
-            <p id="boxNote" style="font-size:12px; color:#ffb4df; min-height:30px;"></p>
+            <p id="boxText" style="font-size:12px; color:#ffd1e8; min-height:35px;"></p>
           </div>
 
-          <!-- 4. Reaction Test -->
-          <div class="game-tab" id="tab3">
-            <p style="font-size:11px; opacity:0.8;">Tap when red turns GREEN!</p>
-            <div class="reaction-box" id="reactBox" onclick="handleReaction()">Tap to Start</div>
-          </div>
-
-          <!-- 5. Mini Emoji Quiz -->
-          <div class="game-tab" id="tab4">
-            <p style="font-size:11px; opacity:0.8;">Guess the Movie / Topic!</p>
-            <div style="font-size:28px; margin:10px 0;" id="quizEmojis">🦁 👑 🌅</div>
-            <div class="quiz-options" id="quizOpts"></div>
-            <p id="quizRes" style="font-size:11px; color:#ffb4df; margin-top:6px;"></p>
-          </div>
-
-          <!-- 6. Mood Picker -->
-          <div class="game-tab" id="tab5">
-            <p style="font-size:11px; opacity:0.8;">How are you feeling right now?</p>
-            <div class="mood-grid">
-              <button class="mood-btn" onclick="getMoodNote('😴')">😴</button>
-              <button class="mood-btn" onclick="getMoodNote('😰')">😰</button>
-              <button class="mood-btn" onclick="getMoodNote('🤯')">🤯</button>
-              <button class="mood-btn" onclick="getMoodNote('😎')">😎</button>
+          <!-- 5. Rain Break -->
+          <div class="cozy-tab" id="tab4">
+            <div class="rain-box">
+              <div class="raindrop" style="left:20%; animation-duration: 0.8s;">💧</div>
+              <div class="raindrop" style="left:50%; animation-duration: 0.6s;">💧</div>
+              <div class="raindrop" style="left:80%; animation-duration: 1.0s;">💧</div>
+              <span style="z-index:2; font-size:12px; background:rgba(0,0,0,0.45); padding:5px 12px; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">Close your eyes, breathe in, and relax... 🌿</span>
             </div>
-            <p id="moodNote" style="font-size:12px; color:#ffb4df; margin-top:10px; min-height:40px;"></p>
+          </div>
+
+          <!-- 6. Music -->
+          <div class="cozy-tab" id="tab5">
+            <p style="font-size:13px; font-weight:bold; color:#ffd1e8;">🎵 Soft Study Vibe</p>
+            <p style="font-size:11px; opacity:0.8; margin:6px 0 10px;">Imagine calm, cozy lo-fi notes playing in the background while you conquer your goals. 🎧✨</p>
+            <button class="cozy-action-btn" onclick="alert('🎶 Cozy background melody playing in spirit! You got this!')">Toggle Chill Vibe 🎶</button>
           </div>
 
         </div>
@@ -401,12 +396,10 @@ h1{
   function revealCheer() {
     document.getElementById("btnGroup").style.display = "none";
     document.getElementById("secretMessage").style.display = "block";
-    initMemory();
-    loadQuiz();
   }
 
   function switchTab(idx) {
-    const tabs = document.querySelectorAll('.game-tab');
+    const tabs = document.querySelectorAll('.cozy-tab');
     const btns = document.querySelectorAll('.tab-btn');
     tabs.forEach((t, i) => {
       t.classList.toggle('active', i === idx);
@@ -414,138 +407,47 @@ h1{
     });
   }
 
-  /* 1. Tap Hearts */
-  let hScore = 0, hTime = 20, hInt = null, hTout = null;
-  function startHearts() {
-    hScore = 0; hTime = 20;
-    document.getElementById("hScore").innerText = hScore;
-    document.getElementById("hTimer").innerText = hTime;
-    clearInterval(hInt); clearTimeout(hTout);
-    hInt = setInterval(() => {
-      hTime--;
-      document.getElementById("hTimer").innerText = hTime;
-      if(hTime <= 0) {
-        clearInterval(hInt); clearTimeout(hTout);
-        document.getElementById("hArea").innerHTML = `<p style="margin-top:50px; font-weight:bold; color:#ffb4df;">Time's up! Caught ${hScore} hearts! 🎉</p>`;
-      }
-    }, 1000);
-    spawnH();
-  }
-  function spawnH() {
-    const area = document.getElementById("hArea");
-    area.innerHTML = "";
-    if(hTime <= 0) return;
-    const h = document.createElement("div");
-    h.className = "heart-target";
-    h.innerText = ["💖","💗","💕","✨"][Math.floor(Math.random()*4)];
-    h.style.left = Math.max(5, Math.floor(Math.random()*(area.clientWidth-35))) + "px";
-    h.style.top = Math.max(5, Math.floor(Math.random()*(area.clientHeight-35))) + "px";
-    h.onclick = h.ontouchstart = (e) => {
-      e.preventDefault(); hScore++;
-      document.getElementById("hScore").innerText = hScore;
-      clearTimeout(hTout); spawnH();
-    };
-    area.appendChild(h);
-    hTout = setTimeout(() => { if(hTime > 0) spawnH(); }, 850);
-  }
-
-  /* 2. Memory Game */
-  const items = ['📚','📚','🧠','🧠','✨','✨','🎯','🎯'];
-  let flipped = [], matched = 0;
-  function initMemory() {
-    const grid = document.getElementById("memGrid");
-    grid.innerHTML = ""; flipped = []; matched = 0;
-    items.sort(() => 0.5 - Math.random());
-    items.forEach((item, i) => {
-      const card = document.createElement("div");
-      card.className = "memory-card";
-      card.dataset.val = item;
-      card.dataset.idx = i;
-      card.onclick = () => flipCard(card);
-      grid.appendChild(card);
-    });
-  }
-  function flipCard(card) {
-    if(flipped.length < 2 && !card.innerText) {
-      card.innerText = card.dataset.val;
-      flipped.push(card);
-      if(flipped.length === 2) {
-        if(flipped[0].dataset.val === flipped[1].dataset.val) {
-          matched += 2; flipped = [];
-          if(matched === items.length) alert("You matched them all! 🧠✨");
-        } else {
-          setTimeout(() => {
-            flipped.forEach(c => c.innerText = "");
-            flipped = [];
-          }, 600);
-        }
-      }
-    }
-  }
-
-  /* 3. Pick a Box */
-  const notes = [
-    "🌟 Surprise! You're going to score higher than expected!",
-    "☕ Bonus Boost: Unlimited focus and clear memory unlocked!",
-    "🍀 Lucky Charm: The questions will be super easy for you!"
+  // 🐶 Pet Puppy logic
+  let pIndex = 0;
+  const pMsgs = [
+    "Woof! 🥰 You're doing amazing!",
+    "Tail wagging at maximum speed! 🐾✨",
+    "The puppy says you're going to pass with flying colors! 🐶",
+    "Sending you cozy puppy hugs! ❤️"
   ];
-  function openBox(idx) {
-    document.getElementById("boxNote").innerText = notes[idx];
+  function petPuppy() {
+    pIndex = (pIndex + 1) % pMsgs.length;
+    document.getElementById("puppyText").innerText = pMsgs[pIndex];
+    document.getElementById("puppyEmoji").innerText = pIndex % 2 === 0 ? "🐶" : "🐕‍🦺";
   }
 
-  /* 4. Reaction Test */
-  let reactState = "idle", reactTime, timerId;
-  function handleReaction() {
-    const box = document.getElementById("reactBox");
-    if(reactState === "idle") {
-      box.style.background = "#ce3a3a";
-      box.innerText = "Wait for GREEN...";
-      reactState = "waiting";
-      timerId = setTimeout(() => {
-        box.style.background = "#2eaf62";
-        box.innerText = "TAP NOW!";
-        reactState = "ready";
-        reactTime = Date.now();
-      }, Math.random()*2000 + 1500);
-    } else if(reactState === "waiting") {
-      clearTimeout(timerId);
-      box.innerText = "Too early! Tap to retry.";
-      reactState = "idle";
-    } else if(reactState === "ready") {
-      const diff = Date.now() - reactTime;
-      box.innerText = `Fast! ${diff} ms ⚡ (Tap to retry)`;
-      box.style.background = "#ce3a3a";
-      reactState = "idle";
-    }
+  // 👗 Dress Up logic
+  function dressUp(acc) {
+    document.getElementById("avatar").innerText = "👧🏻 " + acc;
+    document.getElementById("dressText").innerText = "Looking ultra smart and ready! ✨";
   }
 
-  /* 5. Emoji Quiz */
-  function loadQuiz() {
-    const opts = ["The Lion King", "Kung Fu Panda", "Tarzan", "Madagascar"];
-    const area = document.getElementById("quizOpts");
-    area.innerHTML = "";
-    opts.forEach(o => {
-      const b = document.createElement("div");
-      b.className = "quiz-opt";
-      b.innerText = o;
-      b.onclick = () => {
-        document.getElementById("quizRes").innerText = o === "The Lion King" ? "Correct! You're a genius! 🦁👑" : "Try again! 😉";
-      };
-      area.appendChild(b);
-    });
-  }
-
-  /* 6. Mood Picker */
-  function getMoodNote(m) {
-    const msgs = {
-      '😴': "Take a 10-min power nap! A fresh brain retains 2x more information. 🛌",
-      '😰': "Deep breath in... hold... release. You studied and you are prepared. You've got this! 🌸",
-      '🤯': "Brain overload? Drink a cold glass of water and stretch for 2 minutes! 💧",
-      '😎': "That's the confidence! Walk into that exam hall like a boss! 🚀"
+  // 🍜 Food Corner logic
+  function chooseFood(item) {
+    const foodNotes = {
+      '🍜': "A delicious warm bowl of noodles is waiting for you right after your exam! 🍜",
+      '🍕': "A big celebration pizza party is mandatory once you finish! 🍕",
+      '🧋': "Bubble tea sugar boost activated to fuel your brain! 🧋",
+      '🍫': "Sweet chocolate energy for a brilliant student! 🍫"
     };
-    document.getElementById("moodNote").innerText = msgs[m];
+    document.getElementById("foodText").innerText = foodNotes[item];
+  }
+
+  // 🎁 Mystery Box logic
+  const boxNotes = [
+    "🎁 Surprise Note: You have prepared way better than you think you have!",
+    "🎁 Surprise Note: Remember to take deep breaths—you are totally capable!",
+    "🎁 Surprise Note: Sending you a massive wave of absolute best luck energy!"
+  ];
+  function openBox(index) {
+    document.getElementById("boxText").innerText = boxNotes[index];
   }
 </script>
 
 </body>
-                                                                                      </html>                                                                                      
+  </html>
