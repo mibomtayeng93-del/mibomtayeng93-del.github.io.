@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kenri ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 20% 10%,#7b2b72 0%,transparent 35%),
+    radial-gradient(circle at 80% 90%,#4b1d68 0%,transparent 35%),
+    linear-gradient(135deg,#090713,#170d25,#090713);
+  overflow-x:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.container{
+  width:100%;
+  max-width:480px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.card{
+  width:100%;
+  padding:30px 20px;
+  border-radius:30px;
+  background:rgba(255,255,255,.075);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+  backdrop-filter:blur(18px);
+  position: relative;
+}
+
+.top{
+  font-size:12px;
+  letter-spacing:4px;
+  opacity:.65;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(28px,7vw,42px);
+  margin:10px 0 10px;
+  background:linear-gradient(90deg,#fff,#ffb4df,#d9b8ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.subtitle{
+  font-size:14px;
+  line-height:1.6;
+  opacity:.85;
+  margin-bottom:20px;
+}
+
+.button-group{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+  min-height: 60px;
+  margin-bottom: 10px;
+}
+
+.btn{
+  border:0;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  padding:12px 28px;
+  border-radius:50px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  transition: transform 0.1s ease;
+}
+
+#yesBtn {
+  background:linear-gradient(90deg,#ff4d9d,#9b5cff);
+  position: relative;
+}
+
+#noBtn {
+  background:rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.message{
+  display:none;
+  margin-top:15px;
+  text-align:left;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.13);
+  line-height:1.7;
+  font-size:14px;
+  animation: fadeIn 0.6s ease;
+}
+
+.message h2{
+  text-align:center;
+  margin-bottom:10px;
+  font-size:18px;
+  color:#ffb4df;
+}
+
+.game-box {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.2);
+  border: 1px dashed rgba(255,255,255,0.2);
+  text-align: center;
+}
+
+.game-btn {
+  border: 0;
+  background: linear-gradient(90deg,#9b5cff,#ff4d9d);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.game-output {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #ffb4df;
+  font-style: italic;
+  min-height: 40px;
+}
+
+.good-luck {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  background: rgba(255, 180, 223, 0.15);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card" id="cardBox">
+      <div class="top">📚 Exam Stress Reliever</div>
+      <h1>Will you pass your exam?</h1>
+      <p class="subtitle">Be completely honest with me... ready to ace it? 😉</p>
+      
+      <!-- Interactive Buttons -->
+      <div class="button-group" id="btnGroup">
+        <button class="btn" id="yesBtn" onmouseover="moveYes()" ontouchstart="moveYes()" onclick="moveYes()">Yes</button>
+        <button class="btn" id="noBtn" onclick="revealCheer()">No</button>
+      </div>
+
+      <!-- Secret Message & Game Area (Appears when 'No' is clicked) -->
+      <div class="message" id="secretMessage">
+        <h2>Don't Stress, Kenri! 💪✨</h2>
+        <p>I know exams can feel super heavy right now, but remember how capable you are. Take a deep breath, trust yourself, and do your best. You've got this!</p>
+        
+        <!-- Mini Game / Motivation Generator -->
+        <div class="game-box">
+          <p style="font-size:12px; opacity:0.8;">🎁 Tap below for your random Exam Power-Up!</p>
+          <button class="game-btn" onclick="getRandomBoost()">Get Power-Up ✨</button>
+          <div class="game-output" id="gameOutput">Tap the button for a motivational boost! 💖</div>
+        </div>
+
+        <!-- Final Best of Luck Note -->
+        <div class="good-luck">
+          🍀 All the absolute best of luck for your exams, Kenri! Crush it! 🚀❤️
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  function moveYes() {
+    const yesBtn = document.getElementById("yesBtn");
+    const randomX 
