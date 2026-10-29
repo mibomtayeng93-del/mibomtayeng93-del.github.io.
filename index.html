@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rainy Break 🌧️</title>
+<title>Rainy Little Break</title>
 
 <style>
 *{
@@ -13,513 +13,790 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  color:white;
-  background:
-    linear-gradient(rgba(5,10,18,.55),rgba(5,10,18,.85)),
-    radial-gradient(circle at top,#34445c,#101722 55%,#070b11);
+  font-family:Arial,Helvetica,sans-serif;
+  background:#071019;
+  color:#fff;
   overflow-x:hidden;
 }
 
-.container{
-  width:92%;
-  max-width:700px;
-  margin:auto;
-  padding:35px 0 60px;
+/* ---------- HERO ---------- */
+
+.hero{
+  min-height:100vh;
   position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 18px;
+  overflow:hidden;
+
+  background:
+    linear-gradient(rgba(4,10,17,.45),rgba(4,10,17,.82)),
+    url("https://images.unsplash.com/photo-1519692933481-e162a57d6721?auto=format&fit=crop&w=1600&q=85")
+    center/cover no-repeat;
+}
+
+.hero-content{
+  position:relative;
+  z-index:3;
+  max-width:650px;
+}
+
+.hero h1{
+  font-size:clamp(42px,11vw,76px);
+  font-weight:700;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
+
+.hero p{
+  font-size:17px;
+  line-height:1.7;
+  color:#d9e3eb;
+  margin-bottom:28px;
+}
+
+.start-btn{
+  border:none;
+  padding:16px 28px;
+  border-radius:50px;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+}
+
+.start-btn:hover{
+  background:rgba(255,255,255,.25);
+}
+
+/* ---------- RAIN ---------- */
+
+.rain{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
   z-index:2;
 }
 
-header{
-  text-align:center;
-  padding:30px 15px;
+.raindrop{
+  position:absolute;
+  width:1px;
+  height:35px;
+  background:rgba(210,230,245,.45);
+  transform:rotate(15deg);
+  animation:fall linear infinite;
 }
 
-header h1{
-  font-size:48px;
-  margin-bottom:12px;
+@keyframes fall{
+  from{
+    transform:translateY(-80px) rotate(15deg);
+  }
+  to{
+    transform:translateY(110vh) rotate(15deg);
+  }
 }
 
-header p{
-  line-height:1.7;
-  opacity:.75;
+/* ---------- MAIN ---------- */
+
+main{
+  width:92%;
+  max-width:850px;
+  margin:auto;
+  padding:45px 0 70px;
 }
 
-.card{
-  margin:20px 0;
-  padding:24px 20px;
-  border-radius:25px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(12px);
-  box-shadow:0 15px 50px rgba(0,0,0,.25);
+.section{
+  margin-bottom:28px;
+  padding:25px;
+  border-radius:28px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.card h2{
-  margin-bottom:15px;
+.section h2{
+  font-size:25px;
+  margin-bottom:10px;
 }
 
-button{
-  border:0;
-  border-radius:30px;
-  padding:13px 20px;
-  margin:5px;
-  color:white;
-  background:#40566d;
+.section-intro{
+  color:#aebbc6;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+/* ---------- PLAYER ---------- */
+
+.player{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.control{
+  border:none;
+  border-radius:50px;
+  padding:12px 18px;
+  background:#33495d;
+  color:#fff;
   cursor:pointer;
-  font-size:14px;
 }
 
-button:active{
-  transform:scale(.95);
+.volume{
+  width:130px;
 }
 
-.primary{
-  background:linear-gradient(90deg,#587b9d,#7b6aa8);
-}
+/* ---------- VIDEO ---------- */
 
 video{
   width:100%;
-  border-radius:20px;
   display:block;
-  background:#05080c;
-  margin-bottom:12px;
-}
-
-.rain-window{
-  height:220px;
   border-radius:20px;
+  background:#020508;
+}
+
+/* ---------- CARDS ---------- */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.choice{
+  border:1px solid rgba(255,255,255,.12);
+  background:#101b25;
+  color:#fff;
+  padding:0;
   overflow:hidden;
-  position:relative;
-  background:
-    linear-gradient(#111b29,#263446 50%,#111820);
-  margin-bottom:15px;
-}
-
-.cloud{
-  position:absolute;
-  width:230px;
-  height:75px;
-  background:#202a38;
-  border-radius:70px;
-  top:35px;
-  left:50%;
-  transform:translateX(-50%);
-  opacity:.9;
-}
-
-.cloud:before,
-.cloud:after{
-  content:"";
-  position:absolute;
-  background:#202a38;
-  border-radius:50%;
-}
-
-.cloud:before{
-  width:90px;
-  height:90px;
-  left:40px;
-  top:-35px;
-}
-
-.cloud:after{
-  width:110px;
-  height:110px;
-  right:30px;
-  top:-55px;
-}
-
-.drop{
-  position:absolute;
-  width:2px;
-  height:18px;
-  background:#9db8d1;
-  opacity:.65;
-  animation:rain .8s linear infinite;
-}
-
-@keyframes rain{
-  from{
-    transform:translateY(-30px);
-  }
-  to{
-    transform:translateY(250px);
-  }
-}
-
-#puppy{
-  font-size:85px;
-  text-align:center;
-  margin:15px;
+  border-radius:20px;
   cursor:pointer;
+  text-align:left;
   transition:.2s;
 }
 
-#puppy:active{
-  transform:scale(.85);
+.choice:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,.3);
 }
+
+.choice.selected{
+  outline:2px solid #b5cde0;
+}
+
+.choice img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  display:block;
+}
+
+.choice span{
+  display:block;
+  padding:14px;
+  font-size:15px;
+}
+
+/* ---------- DOG ---------- */
+
+.dog-box{
+  text-align:center;
+}
+
+.dog-box img{
+  width:100%;
+  max-height:360px;
+  object-fit:cover;
+  border-radius:22px;
+  display:block;
+  margin-bottom:16px;
+}
+
+.dog-btn{
+  border:none;
+  padding:13px 22px;
+  border-radius:50px;
+  background:#536d83;
+  color:white;
+  cursor:pointer;
+}
+
+.dog-text{
+  margin-top:15px;
+  color:#c8d5df;
+  min-height:24px;
+}
+
+/* ---------- RESULT ---------- */
 
 .result{
   text-align:center;
-  min-height:35px;
-  margin-top:10px;
+  margin-top:20px;
+  padding:17px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  color:#dbe6ee;
   line-height:1.6;
 }
 
-.options{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:5px;
-}
+/* ---------- SURPRISE ---------- */
 
-.big{
-  font-size:55px;
-  text-align:center;
-  margin:15px;
-}
-
-.mystery{
-  font-size:45px;
+.surprise-btn{
+  display:block;
+  margin:10px auto 0;
+  border:none;
+  padding:15px 25px;
+  border-radius:50px;
+  background:#5a7083;
+  color:white;
   cursor:pointer;
-  display:inline-block;
-  margin:10px;
-  transition:.2s;
-}
-
-.mystery:active{
-  transform:scale(.8);
-}
-
-.final{
-  text-align:center;
-  line-height:1.8;
+  font-size:15px;
 }
 
 .footer{
   text-align:center;
-  opacity:.4;
-  font-size:11px;
-  margin-top:30px;
+  color:#71808c;
+  font-size:12px;
+  padding:20px;
+}
+
+@media(max-width:560px){
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .choice img{
+    height:210px;
+  }
+
+  .section{
+    padding:19px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- ================= HERO ================= -->
 
-<header>
-  <h1>🌧️ Rainy Break</h1>
-  <p>
-    Forget the exams for a few minutes.<br>
-    Just relax, listen to the rain and enjoy. 🤍
+<section class="hero">
+
+  <div class="rain" id="rain"></div>
+
+  <div class="hero-content">
+
+    <h1>Rainy Little Break</h1>
+
+    <p>
+      Forget everything for a few minutes.<br>
+      Watch the rain, relax, and enjoy a tiny break.
+    </p>
+
+    <button class="start-btn" onclick="startBreak()">
+      Start My Rainy Break
+    </button>
+
+  </div>
+
+</section>
+
+
+<main>
+
+<!-- ================= SOUND ================= -->
+
+<section class="section">
+
+  <h2>Rain & Wind</h2>
+
+  <p class="section-intro">
+    Put your headphones on, turn the volume up a little,
+    and just relax.
   </p>
-</header>
 
+  <div class="player">
 
-<!-- RAIN SECTION -->
+    <button class="control" onclick="toggleSound()" id="soundButton">
+      Play Rain
+    </button>
 
-<div class="card">
+    <label>
+      Volume
+      <input
+        class="volume"
+        id="volume"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.6"
+        oninput="changeVolume()"
+      >
+    </label>
 
-<h2>🌧️ Just Watch The Rain</h2>
+  </div>
 
-<div class="rain-window" id="rainWindow">
-  <div class="cloud"></div>
-</div>
+  <!-- Put rain.mp3 in the same GitHub folder -->
+  <audio id="rainAudio" loop>
+    <source src="rain.mp3" type="audio/mpeg">
+  </audio>
 
-<p style="opacity:.7;line-height:1.6;">
-  Dark clouds, rain and a little wind...<br>
-  Your tiny escape from studying. 🌧️
-</p>
+</section>
 
-<button class="primary" onclick="toggleRainSound()">
-  🔊 Rain Sound
-</button>
 
-</div>
+<!-- ================= RAIN VIDEO ================= -->
 
+<section class="section">
 
-<!-- RAIN VIDEO -->
+  <h2>Watch The Rain</h2>
 
-<div class="card">
+  <p class="section-intro">
+    A quiet little place to escape the exam stress.
+  </p>
 
-<h2>🎬 Rain Video</h2>
+  <!-- Put rain.mp4 in the same GitHub folder -->
+  <video controls loop playsinline>
+    <source src="rain.mp4" type="video/mp4">
+    Your browser does not support this video.
+  </video>
 
-<video controls loop playsinline>
-  <source src="rain.mp4" type="video/mp4">
-  Your browser does not support video.
-</video>
+</section>
 
-<p style="opacity:.6;font-size:12px;line-height:1.5;">
-  Add your own rain video to this website and name it
-  <b>rain.mp4</b>.
-</p>
 
-</div>
+<!-- ================= DOG ================= -->
 
+<section class="section">
 
-<!-- PUPPY -->
+  <h2>Little Puppy Break</h2>
 
-<div class="card">
+  <p class="section-intro">
+    Because sometimes you just need a cute dog.
+  </p>
 
-<h2>🐶 Pet The Puppy</h2>
+  <div class="dog-box">
 
-<div id="puppy" onclick="petPuppy()">🐶</div>
+    <img
+      src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1000&q=85"
+      alt="Cute dog"
+    >
 
-<div id="puppyText" class="result">
-  The puppy is waiting for you. 🐾
-</div>
+    <button class="dog-btn" onclick="petDog()">
+      Pet the puppy
+    </button>
 
-</div>
+    <div class="dog-text" id="dogText">
+      The puppy is waiting for you.
+    </div>
 
+  </div>
 
-<!-- CLOTHES -->
+</section>
 
-<div class="card">
 
-<h2>👗 Pick An Outfit</h2>
+<!-- ================= CLOTHES ================= -->
 
-<div id="outfit" class="big">👕👖👟</div>
+<section class="section">
 
-<div class="options">
+  <h2>Pick Your Style</h2>
 
-<button onclick="outfit('👗🥿👜')">
-  Cute
-</button>
+  <p class="section-intro">
+    Which outfit would you choose today?
+  </p>
 
-<button onclick="outfit('👚👖👟')">
-  Casual
-</button>
+  <div class="cards">
 
-<button onclick="outfit('🧥👖🥾')">
-  Rainy Day
-</button>
+    <button class="choice" onclick="chooseClothes(this,'Casual')">
 
-<button onclick="outfit('👕🩳👟')">
-  Comfy
-</button>
+      <img
+        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+        alt="Casual clothes"
+      >
 
-</div>
+      <span>Casual</span>
 
-<div id="outfitText" class="result">
-  Choose your rainy-day style. ☁️
-</div>
+    </button>
 
-</div>
 
+    <button class="choice" onclick="chooseClothes(this,'Rainy Day')">
 
-<!-- FOOD -->
+      <img
+        src="https://images.unsplash.com/photo-1539533018447-63fcce2678e2?auto=format&fit=crop&w=900&q=85"
+        alt="Rainy day clothes"
+      >
 
-<div class="card">
+      <span>Rainy Day</span>
 
-<h2>🍜 What Are You Craving?</h2>
+    </button>
 
-<div class="options">
 
-<button onclick="food('🍕')">🍕 Pizza</button>
+    <button class="choice" onclick="chooseClothes(this,'Street Style')">
 
-<button onclick="food('🍜')">🍜 Noodles</button>
+      <img
+        src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=900&q=85"
+        alt="Street style clothes"
+      >
 
-<button onclick="food('🍔')">🍔 Burger</button>
+      <span>Street Style</span>
 
-<button onclick="food('🍫')">🍫 Chocolate</button>
+    </button>
 
-<button onclick="food('🍰')">🍰 Cake</button>
 
-</div>
+    <button class="choice" onclick="chooseClothes(this,'Comfy')">
 
-<div id="foodText" class="result">
-  Choose something delicious. 😋
-</div>
+      <img
+        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"
+        alt="Comfortable clothes"
+      >
 
-</div>
+      <span>Comfy</span>
 
+    </button>
 
-<!-- MYSTERY -->
+  </div>
 
-<div class="card" style="text-align:center;">
+  <div class="result" id="clothesResult">
+    Choose an outfit.
+  </div>
 
-<h2>🎁 Pick A Mystery Box</h2>
+</section>
 
-<div>
-  <span class="mystery" onclick="mystery(1)">🎁</span>
-  <span class="mystery" onclick="mystery(2)">🎁</span>
-  <span class="mystery" onclick="mystery(3)">🎁</span>
-</div>
 
-<div id="mysteryText" class="result">
-  One of them has a surprise. 👀
-</div>
+<!-- ================= FOOD ================= -->
 
-</div>
+<section class="section">
 
+  <h2>Food Break</h2>
 
-<!-- FINAL -->
+  <p class="section-intro">
+    Okay, important question... what are you eating? 😭
+  </p>
 
-<div class="card final">
+  <div class="cards">
 
-<h2>🤍 One Last Thing</h2>
+    <button class="choice" onclick="chooseFood(this,'Pizza')">
 
-<p>
-  Exams can be tiring, so don't forget to take little breaks.
-</p>
+      <img
+        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85"
+        alt="Pizza"
+      >
 
-<p>
-  Listen to the rain 🌧️<br>
-  Eat something good 🍜<br>
-  Play with the puppy 🐶<br>
-  And breathe. 🌿
-</p>
+      <span>Pizza</span>
 
-<p style="margin-top:15px;">
-  You've got this. 📚✨
-</p>
+    </button>
 
-</div>
 
+    <button class="choice" onclick="chooseFood(this,'Noodles')">
+
+      <img
+        src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=85"
+        alt="Noodles"
+      >
+
+      <span>Noodles</span>
+
+    </button>
+
+
+    <button class="choice" onclick="chooseFood(this,'Burger')">
+
+      <img
+        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+        alt="Burger"
+      >
+
+      <span>Burger</span>
+
+    </button>
+
+
+    <button class="choice" onclick="chooseFood(this,'Dessert')">
+
+      <img
+        src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+        alt="Dessert"
+      >
+
+      <span>Dessert</span>
+
+    </button>
+
+  </div>
+
+  <div class="result" id="foodResult">
+    Pick what you're craving.
+  </div>
+
+</section>
+
+
+<!-- ================= SURPRISE ================= -->
+
+<section class="section">
+
+  <h2>A Little Surprise</h2>
+
+  <p class="section-intro">
+    You deserve a tiny reminder that you're doing okay.
+  </p>
+
+  <button class="surprise-btn" onclick="surprise()">
+    Open Surprise
+  </button>
+
+  <div class="result" id="surpriseResult">
+  </div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="section">
+
+  <div class="result">
+
+    Take a deep breath.
+
+    <br><br>
+
+    Exams will pass.
+
+    <br>
+
+    For now, enjoy the rain,
+    eat something nice,
+    and give yourself a little break.
+
+    <br><br>
+
+    You've got this. 🤍
+
+  </div>
+
+</section>
+
+</main>
 
 <div class="footer">
-  Made as a little exam break 🌧️🤍
-</div>
-
+  Made as a little rainy escape.
 </div>
 
 
 <script>
 
-/* =========================
-   RAIN DROPS
-========================= */
+/* ================= RAIN ================= */
 
-const rainWindow =
-document.getElementById("rainWindow");
+const rain = document.getElementById("rain");
 
-for(let i=0;i<80;i++){
+for(let i=0;i<100;i++){
 
-  const drop =
-  document.createElement("div");
+  const drop = document.createElement("div");
 
-  drop.className="drop";
+  drop.className="raindrop";
 
   drop.style.left =
-  Math.random()*100+"%";
+    Math.random()*100+"%";
 
-  drop.style.top =
-  Math.random()*-200+"px";
+  drop.style.animationDuration =
+    (0.5+Math.random()*0.8)+"s";
 
   drop.style.animationDelay =
-  Math.random()*2+"s";
+    Math.random()*2+"s";
 
-  rainWindow.appendChild(drop);
+  rain.appendChild(drop);
 }
 
 
-/* =========================
-   RAIN SOUND
-========================= */
+/* ================= START ================= */
 
-let audio;
+function startBreak(){
 
-function toggleRainSound(){
+  document.querySelector("main")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
-  if(!audio){
+  const audio =
+    document.getElementById("rainAudio");
 
-    audio =
-    new Audio("rain.mp3");
+  audio.volume=.6;
 
-    audio.loop=true;
-  }
+  audio.play().then(()=>{
+
+    document.getElementById("soundButton")
+      .textContent="Pause Rain";
+
+  }).catch(()=>{
+
+    alert(
+      "Tap 'Play Rain' to start the rain sound."
+    );
+
+  });
+}
+
+
+/* ================= SOUND ================= */
+
+function toggleSound(){
+
+  const audio =
+    document.getElementById("rainAudio");
+
+  const button =
+    document.getElementById("soundButton");
 
   if(audio.paused){
 
     audio.play();
 
+    button.textContent="Pause Rain";
+
   }else{
 
     audio.pause();
+
+    button.textContent="Play Rain";
+
   }
+
 }
 
 
-/* =========================
-   PUPPY
-========================= */
+function changeVolume(){
 
-let puppyMessages=[
-  "The puppy says: you are doing great! 🐶❤️",
-  "🐾 Head pat received!",
-  "The puppy wants a snack. 🦴",
-  "Exam stress? Puppy says NO. 😂",
-  "You deserve a little break. 🌧️"
+  const audio =
+    document.getElementById("rainAudio");
+
+  audio.volume =
+    document.getElementById("volume").value;
+
+}
+
+
+/* ================= DOG ================= */
+
+const dogMessages=[
+
+  "The puppy says you're doing great.",
+
+  "Emergency puppy hug activated.",
+
+  "The puppy thinks you deserve a snack.",
+
+  "No studying for one minute. Puppy rules.",
+
+  "Okay... now smile."
+
 ];
 
-function petPuppy(){
+function petDog(){
 
-  const text =
-  puppyMessages[
-    Math.floor(
-      Math.random()*puppyMessages.length
-    )
-  ];
+  const message =
+    dogMessages[
+      Math.floor(
+        Math.random()*dogMessages.length
+      )
+    ];
 
-  document.getElementById("puppyText")
-  .textContent=text;
+  document.getElementById("dogText")
+    .textContent=message;
+
 }
 
 
-/* =========================
-   CLOTHES
-========================= */
+/* ================= CLOTHES ================= */
 
-function outfit(type){
+function clearChoices(){
 
-  document.getElementById("outfit")
-  .textContent=type;
+  document
+    .querySelectorAll(".choice")
+    .forEach(function(card){
 
-  document.getElementById("outfitText")
-  .textContent=
-  "Okayyy, this look is actually cute. 😭✨";
+      card.classList.remove("selected");
+
+    });
+
 }
 
 
-/* =========================
-   FOOD
-========================= */
+function chooseClothes(button,name){
 
-function food(item){
+  clearChoices();
 
-  document.getElementById("foodText")
-  .textContent=
-  item+" has been selected! Now I'm hungry too. 😂";
+  button.classList.add("selected");
+
+  document.getElementById("clothesResult")
+    .textContent=
+      "Nice choice. " + name +
+      " looks perfect for a rainy break.";
+
 }
 
 
-/* =========================
-   MYSTERY BOX
-========================= */
+/* ================= FOOD ================= */
+
+function chooseFood(button,name){
+
+  clearChoices();
+
+  button.classList.add("selected");
+
+  document.getElementById("foodResult")
+    .textContent=
+      name +
+      " selected. Now go get something delicious.";
+
+}
+
+
+/* ================= SURPRISE ================= */
 
 const surprises=[
 
-  "🌧️ Take a deep breath. You're doing better than you think.",
+  "You are allowed to take a break. No guilt.",
 
-  "🐶 Emergency puppy happiness unlocked!",
+  "Drink some water, relax your shoulders, and breathe.",
 
-  "🍫 You officially deserve a snack break!"
+  "One bad study session doesn't decide your exam.",
+
+  "You're doing your best, and that's enough for today.",
+
+  "Okay, little break finished... now go crush those exams."
 
 ];
 
-function mystery(number){
+function surprise(){
 
-  document.getElementById("mysteryText")
-  .textContent=
-  surprises[number-1];
+  const message =
+    surprises[
+      Math.floor(
+        Math.random()*surprises.length
+      )
+    ];
+
+  document.getElementById("surpriseResult")
+    .textContent=message;
+
 }
 
 </script>
 
 </body>
-    </html>
+</html>
